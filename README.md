@@ -102,7 +102,7 @@ The `InputMask` object provides a method to retrieve the value entered by the us
 
 ## Author
 
-[Your Name or Alias] - Based on user request in prompt.
+Jaime Paez - Based on user request in prompt.
 
 ## License
 
