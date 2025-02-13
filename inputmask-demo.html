@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Input Mask Script</title>
+    <link rel="stylesheet" href="inputmask-demo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Demo de Input Mask Script</h1>
+
+        <div class="form-group">
+            <label for="phone">Número de Teléfono (EE.UU.):</label>
+            <input type="tel" id="phone" data-mask="(999) 999-9999" placeholder="(999) 999-9999">
+            <small class="form-text text-muted">Máscara: `(999) 999-9999`</small>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Fecha (DD/MM/AAAA):</label>
+            <input type="text" id="date" data-mask="99/99/9999" placeholder="DD/MM/AAAA">
+            <small class="form-text text-muted">Máscara: `99/99/9999`</small>
+        </div>
+
+        <div class="form-group">
+            <label for="creditCard">Tarjeta de Crédito (Formato genérico):</label>
+            <input type="text" id="creditCard" data-mask="9999-9999-9999-9999" placeholder="XXXX-XXXX-XXXX-XXXX">
+            <small class="form-text text-muted">Máscara: `9999-9999-9999-9999`</small>
+        </div>
+
+        <div class="form-group">
+            <label for="zipCode">Código Postal (Formato EE.UU. - 5 dígitos):</label>
+            <input type="text" id="zipCode" data-mask="99999" placeholder="XXXXX">
+            <small class="form-text text-muted">Máscara: `99999`</small>
+        </div>
+
+        <div class="form-group">
+            <label for="productCode">Código de Producto (Alfanumérico - Ejemplo):</label>
+            <input type="text" id="productCode" data-mask="***-***-***" placeholder="XXX-XXX-XXX">
+            <small class="form-text text-muted">Máscara: `***-***-***`</small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email (Ejemplo con placeholder personalizado y clearIfNotMatch):</label>
+            <input type="email" id="email" data-mask="@********************" data-mask-placeholder="usuario@dominio.com" data-mask-clear-if-not-match>
+            <small class="form-text text-muted">Máscara: `@********************`, `data-mask-placeholder`, `data-mask-clear-if-not-match`</small>
+        </div>
+
+        <div class="form-group">
+            <label for="customMask">Máscara Personalizada (Letras mayúsculas y dígitos separados por guiones):</label>
+            <input type="text" id="customMask" data-mask="AAA-999-AAA" placeholder="XXX-999-XXX">
+            <small class="form-text text-muted">Máscara: `AAA-999-AAA`</small>
+        </div>
+
+        <div class="form-group">
+            <label for="selectOnFocusInput">Input con Select on Focus:</label>
+            <input type="text" id="selectOnFocusInput" data-mask="999" data-mask-select-on-focus placeholder="XXX">
+            <small class="form-text text-muted">Máscara: `999`, `data-mask-select-on-focus`</small>
+        </div>
+
+        <div class="form-group">
+            <label for="unmaskedValueOutput">Valor sin máscara del campo de teléfono:</label>
+            <input type="text" id="unmaskedValueOutput" readonly>
+            <small class="form-text text-muted">Valor sin máscara del campo de teléfono (actualizado con JS)</small>
+        </div>
+
+
+    </div>
+
+    <script src="inputmask.js"></script>
+    <script>
+        // Ejemplo de uso de unmaskedValue() para obtener el valor sin máscara y mostrarlo en otro campo
+        const phoneInput = document.getElementById('phone');
+        const unmaskedOutput = document.getElementById('unmaskedValueOutput');
+
+        phoneInput.addEventListener('change', function() {
+            const maskInstance = new InputMask(phoneInput, phoneInput.dataset.mask); // Re-instanciar para acceder a la instancia correcta (mejorar esto si es necesario en un contexto más complejo)
+            unmaskedOutput.value = maskInstance.unmaskedValue();
+        });
+    </script>
+</body>
+</html>
